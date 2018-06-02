@@ -1,0 +1,17 @@
+<div>
+    <h1>Tracks and Track Length</h1>
+    <p>Go back to the <a href='/lengthForm'>Length Form</a> to sort by song length</p>
+    <p>Go back to the <a href='/albums'>Albums</a></p> 
+</div>
+<table>
+    <tr>
+        <th>Track Name</th>
+        <th>Track Length</th>
+    </tr>
+    {{#each results}}
+    <tr>
+        <td>{{Name}}</td>
+        <td>{{Milliseconds}}</td>
+    </tr>
+    {{/each}}
+</table>
