@@ -4,19 +4,13 @@ const sqlite3 = require('sqlite3').verbose();
 
 const db = new sqlite3.Database('./Chinook_Sqlite_AutoIncrementPKs.sqlite');
 
-const query = `SELECT * from Artist LIMIT 100`;
-
-db.each(query, (err, row) => {
-  if (err) throw err;
-  console.log(row);
-});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Data Persistence App' });
 });
 
-/* Albums home page. */
+/* Albums page: displays table of the respective artist/album. */
 router.get('/albums', function(req, res, next) {
   const query = `SELECT Artist.Name as Artist, Album.Title as Album FROM Artist JOIN Album WHERE Artist.ArtistId=Album.ArtistId LIMIT 1000`;
   let resultsArray = [];
