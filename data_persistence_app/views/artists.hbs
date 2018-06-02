@@ -1,0 +1,17 @@
+<div>
+    <h1>Artists and IDs</h1>
+    <p>Go back to the <a href='/artistsForm'>Artists Form</a> to add a new Artist</p> 
+    <p>Go back to the <a href='/albums'>Albums</a></p> 
+</div>
+<table>
+    <tr>
+        <th>Artist ID</th>
+        <th>Artist Name</th>
+    </tr>
+    {{#each results}}
+    <tr>
+        <td>{{ArtistId}}</td>
+        <td>{{Name}}</td>
+    </tr>
+    {{/each}}
+</table>

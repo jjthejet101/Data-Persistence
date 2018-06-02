@@ -22,4 +22,28 @@ router.get('/albums', function(req, res, next) {
   res.render('albums', {results: resultsArray});
 });
 
+/* POST new Artist and ID page */
+router.get('/artistsForm', (req, res) => {
+    res.render('artistsForm');
+});
+
+router.post('/artistsForm', (req, res) => {
+    const query = `INSERT into Artist(ArtistId, Name) VALUES(${req.body.artistId}, "${req.body.name}")`;
+    db.run(query, (err, row) => {
+        if (err) throw err;
+        else {
+            res.redirect(303, '/artists');
+            router.get('/artists', (req, res) => {
+                const query2 = `SELECT ArtistId, Name from Artist LIMIT 1000`;
+                let resultsArray = [];
+                db.each(query2, (err, row) => {
+                    if (err) throw err;
+                    resultsArray.push(row);
+                });
+                res.render('artists', {results: resultsArray});
+            });
+        }   
+    });
+});
+
 module.exports = router;
