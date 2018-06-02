@@ -13,7 +13,12 @@ db.each(query, (err, row) => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Data Persistence App' });
+});
+
+/* Albums home page. */
+router.get('/albums', function(req, res, next) {
+  res.render('albums', {});
 });
 
 module.exports = router;
