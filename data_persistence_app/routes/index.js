@@ -18,7 +18,14 @@ router.get('/', function(req, res, next) {
 
 /* Albums home page. */
 router.get('/albums', function(req, res, next) {
-  res.render('albums', {});
+  const query = `SELECT Artist.Name as Artist, Album.Title as Album FROM Artist JOIN Album WHERE Artist.ArtistId=Album.ArtistId LIMIT 1000`;
+  let resultsArray = [];
+  db.each(query, (err, row) => {
+      if (err) throw err;
+      // console.log(row);
+      resultsArray.push(row);
+    });
+  res.render('albums', {results: resultsArray});
 });
 
 module.exports = router;
