@@ -46,7 +46,7 @@ router.post('/artistsForm', (req, res) => {
     });
 });
 
-// POST songs by length
+/* Post songs by length */
 router.get('/lengthForm', (req, res) => {
     res.render('lengthForm');
 });
